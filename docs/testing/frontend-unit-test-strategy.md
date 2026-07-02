@@ -97,14 +97,13 @@ Branch: <branch>
 Environment: Windows PowerShell, Node <version>, npm <version>
 
 Passed:
-- npm.cmd run typecheck
-- npm.cmd run typecheck:test
-- npm.cmd run lint
+- bun run --cwd apps/web check
+- bun run --cwd apps/web build
+- bun run --cwd apps/web test:unit
 
 Failed / blocked:
-- npm.cmd run format:check: <summary>
-- npm.cmd run build: <summary>
-- npm.cmd run test:unit: <summary>
+- bun run --cwd apps/web <script>: <summary>
+- Windows fallback, if used: npm.cmd run <script>: <reason and result>
 
 Not run:
 - <item>: <reason and residual risk>

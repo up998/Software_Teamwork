@@ -6,18 +6,17 @@
 - 被测分支：`Test/docs/frontend-unit-test-strategy`
 - 被测 commit：`9d4fb24`
 - Base branch：`origin/develop @ f70652e`
-- PR head：`3bbc289`
 - 测试负责人：`@up998`
 - 测试环境：本地 Windows PowerShell；Node `v24.11.1`；npm `11.6.2`
 - 测试层级：本地自动化；前端静态检查；前端单元测试
-- 证据口径：前端命令在原始执行提交 `9d4fb24` 上运行；后续提交 `f8a4c1e`、`3bbc289` 仅调整测试文档和证据描述，未修改 `apps/web/**`。后续文档修订使用 `git diff --check` 和目标 Markdown Prettier 检查验证。
+- 证据口径：前端命令在原始执行提交 `9d4fb24` 上运行；后续提交仅调整测试文档和证据描述，未修改 `apps/web/**`，因此未重跑前端命令。后续文档修订使用 `git diff --check` 和目标 Markdown Prettier 检查验证。
 
 ## 已运行命令与结果
 
 | 命令或操作                                              | 结果 | 证据                                                                                                                                                                                                                                             |
 | ------------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `git pull --ff-only origin develop`                     | pass | 已从 `8d226de` fast-forward 到 `f70652e`。                                                                                                                                                                                                       |
-| `git checkout -B Test/docs/frontend-unit-test-strategy` | pass | 已基于最新 `develop` 创建/重置任务分支；前端命令在 `9d4fb24` 上运行，当前文档修订 head 为 `3bbc289`。                                                                                                                                            |
+| `git checkout -B Test/docs/frontend-unit-test-strategy` | pass | 已基于最新 `develop` 创建/重置任务分支；前端命令在 `9d4fb24` 上运行，后续提交仅修改测试文档和证据记录。                                                                                                                                          |
 | `npm.cmd run typecheck`                                 | pass | `tsc --noEmit` 通过。                                                                                                                                                                                                                            |
 | `npm.cmd run typecheck:test`                            | pass | `tsc -p tsconfig.test.json --noEmit` 通过。                                                                                                                                                                                                      |
 | `npm.cmd run lint`                                      | pass | `eslint .` 通过。                                                                                                                                                                                                                                |
